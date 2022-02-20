@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"os"
 
 	//"github.com/joho/godotenv"
@@ -11,7 +10,10 @@ import (
 )
 
 var DB *gorm.DB
-
+type User struct {
+	Id    int    `json:"id" param:"id"`
+	Name  string `json:"name"`
+}
 func Connect() {
 	//err := godotenv.Load()
 	//if err != nil {
@@ -27,7 +29,7 @@ func Connect() {
 
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		fmt.Println(err.Error())
+		panic("failed to connect database")
 	}
-
+	DB.AutoMigrate(&User{})
 }
