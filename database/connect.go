@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/joho/godotenv"
+	//"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"github.com/lib/pq"
@@ -13,10 +13,10 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	err := godotenv.Load()
-	if err != nil {
-		panic(err.Error())
-	}
+	//err := godotenv.Load()
+	//if err != nil {
+	//	panic(err.Error())
+	//}
 
 	url := os.Getenv("DATABASE_URL")
 	dsn, err := pq.ParseURL(url)
@@ -29,4 +29,5 @@ func Connect() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+
 }

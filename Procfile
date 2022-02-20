@@ -1,1 +1,1 @@
-web: bin/aicard
+web: aicard
