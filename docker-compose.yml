@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '1323:1323'
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: ["./start.sh"]
+  db:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
+    environment:
+      - DATABASE_URL
+volumes:
+  database:
+    driver: local
