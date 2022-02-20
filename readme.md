@@ -5,12 +5,13 @@ $ mkdir -p ~/go/src
 $ cd ~/go/src
 $ git clone https://github.com/syui/aicard
 $ cd aircard
-$ go get -u github.com/kardianos/govendor
-$ govendor init
-$ govendor fetch +out
+# go get -u github.com/kardianos/govendor
+# govendor init
+# govendor fetch +out
 
 $ git add .
 $ git commit -m "heroku deploy"
+$ heroku git:remote -a $APP
 $ git push heroku main
 ```
 
